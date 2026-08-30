@@ -113,6 +113,21 @@
 				</div>
 				@endif
 
+				@if(GROCY_FEATURE_FLAG_ORDERS)
+				<div class="form-group">
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text">{{ $__t('Orders') }}</span>
+						</div>
+						<input id="calendar_color_orders"
+							data-setting-key="calendar_color_orders"
+							class="form-control user-setting-control"
+							type="color"
+							value={{$userSettings['calendar_color_orders']}}>
+					</div>
+				</div>
+				@endif
+
 				@if(GROCY_FEATURE_FLAG_RECIPES_MEALPLAN)
 				<div class="form-group">
 					<div class="input-group">

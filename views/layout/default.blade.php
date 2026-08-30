@@ -247,6 +247,28 @@
 					</a>
 				</li>
 				@endif
+				@if(GROCY_FEATURE_FLAG_ORDERS)
+				<li class="nav-item nav-item-sidebar permission-ORDERS @if($viewName == 'orders') active-page @endif"
+					data-toggle="tooltip"
+					data-placement="right"
+					title="{{ $__t('Orders') }}">
+					<a class="nav-link discrete-link"
+						href="{{ $U('/orders') }}">
+						<i class="fa-solid fa-clipboard-list"></i>
+						<span class="nav-link-text">{{ $__t('Orders') }}</span>
+					</a>
+				</li>
+				<li class="nav-item nav-item-sidebar permission-ORDERS @if($viewName == 'ordersstats') active-page @endif"
+					data-toggle="tooltip"
+					data-placement="right"
+					title="{{ $__t('Order statistics') }}">
+					<a class="nav-link discrete-link"
+						href="{{ $U('/ordersstats') }}">
+						<i class="fa-solid fa-chart-line"></i>
+						<span class="nav-link-text">{{ $__t('Order statistics') }}</span>
+					</a>
+				</li>
+				@endif
 				@if(GROCY_FEATURE_FLAG_EQUIPMENT)
 				<li class="nav-item nav-item-sidebar permission-EQUIPMENT @if($viewName == 'equipment') active-page @endif"
 					data-toggle="tooltip"

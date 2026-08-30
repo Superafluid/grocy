@@ -144,6 +144,7 @@ Setting('FEATURE_FLAG_TASKS', true);
 Setting('FEATURE_FLAG_BATTERIES', true);
 Setting('FEATURE_FLAG_EQUIPMENT', true);
 Setting('FEATURE_FLAG_CALENDAR', true);
+Setting('FEATURE_FLAG_ORDERS', true);
 Setting('FEATURE_FLAG_LABEL_PRINTER', false);
 
 // Sub feature flags
@@ -234,3 +235,4 @@ DefaultUserSetting('calendar_color_tasks', '#28a745'); // The event color (hex c
 DefaultUserSetting('calendar_color_chores', '#ffc107'); // The event color (hex code) for due chores
 DefaultUserSetting('calendar_color_batteries', '#17a2b8'); // The event color (hex code) for due battery charge cycles
 DefaultUserSetting('calendar_color_meal_plan', '#6c757d'); // The event color (hex code) for meal plan items
+DefaultUserSetting('calendar_color_orders', '#dc3545'); // The event color (hex code) for orders arriving

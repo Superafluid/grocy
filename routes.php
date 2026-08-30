@@ -6,6 +6,7 @@ use Grocy\Controllers\Api\ChoresApiController;
 use Grocy\Controllers\Api\FilesApiController;
 use Grocy\Controllers\Api\GenericEntityApiController;
 use Grocy\Controllers\Api\OpenApiController;
+use Grocy\Controllers\Api\OrdersApiController;
 use Grocy\Controllers\Api\PrintApiController;
 use Grocy\Controllers\Api\RecipesApiController;
 use Grocy\Controllers\Api\StockApiController;
@@ -18,6 +19,7 @@ use Grocy\Controllers\ChoresController;
 use Grocy\Controllers\EquipmentController;
 use Grocy\Controllers\GenericEntityController;
 use Grocy\Controllers\LoginController;
+use Grocy\Controllers\OrdersController;
 use Grocy\Controllers\RecipesController;
 use Grocy\Controllers\StockController;
 use Grocy\Controllers\StockReportsController;
@@ -110,6 +112,11 @@ $app->group('', function (RouteCollectorProxy $group)
 	$group->get('/mealplan', [RecipesController::class, 'MealPlan']);
 	$group->get('/mealplansections', [RecipesController::class, 'MealPlanSectionsList']);
 	$group->get('/mealplansection/{sectionId}', [RecipesController::class, 'MealPlanSectionEditForm']);
+
+	// Order routes
+	$group->get('/orders', [OrdersController::class, 'OrdersList']);
+	$group->get('/order/{orderId}', [OrdersController::class, 'OrderEditForm']);
+	$group->get('/ordersstats', [OrdersController::class, 'Stats']);
 
 	// Chore routes
 	$group->get('/choresoverview', [ChoresController::class, 'Overview']);
@@ -243,6 +250,16 @@ $app->group('/api', function (RouteCollectorProxy $group)
 	$group->get('/chores', [ChoresApiController::class, 'Current']);
 	$group->get('/chores/{choreId}', [ChoresApiController::class, 'ChoreDetails']);
 	$group->post('/chores/{choreId}/execute', [ChoresApiController::class, 'TrackChoreExecution']);
+
+	// Orders
+	$group->get('/orders', [OrdersApiController::class, 'GetOrders']);
+	$group->get('/orders/stats', [OrdersApiController::class, 'GetStats']);
+	$group->post('/orders', [OrdersApiController::class, 'CreateOrder']);
+	$group->get('/orders/{orderId}', [OrdersApiController::class, 'GetOrder']);
+	$group->put('/orders/{orderId}', [OrdersApiController::class, 'UpdateOrder']);
+	$group->delete('/orders/{orderId}', [OrdersApiController::class, 'DeleteOrder']);
+	$group->post('/orders/{orderId}/items', [OrdersApiController::class, 'AddItem']);
+	$group->delete('/orders/items/{orderItemId}', [OrdersApiController::class, 'RemoveItem']);
 	$group->post('/chores/executions/{executionId}/undo', [ChoresApiController::class, 'UndoChoreExecution']);
 	$group->post('/chores/executions/calculate-next-assignments', [ChoresApiController::class, 'CalculateNextExecutionAssignments']);
 	$group->get('/chores/{choreId}/printlabel', [ChoresApiController::class, 'ChorePrintLabel']);

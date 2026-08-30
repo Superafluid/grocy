@@ -102,6 +102,25 @@ class CalendarService extends BaseService
 			}
 		}
 
+		$orderEvents = [];
+		if (GROCY_FEATURE_FLAG_ORDERS)
+		{
+			$titlePrefix = LocalizationService::GetInstance()->__t('Order arriving') . ': ';
+
+			foreach ($this->DB->orders_current()->where("arrive_date IS NOT NULL AND status != 'cancelled'") as $currentOrderEntry)
+			{
+				$title = $titlePrefix . ($currentOrderEntry->shopping_location_name ?? $currentOrderEntry->note ?? '#' . $currentOrderEntry->id);
+
+				$orderEvents[] = [
+					'title' => $title,
+					'start' => $currentOrderEntry->arrive_date,
+					'date_format' => 'date',
+					'link' => $this->UrlManager->ConstructUrl('/orders'),
+					'color' => $usersService->GetUserSettings(GROCY_USER_ID)['calendar_color_orders']
+				];
+			}
+		}
+
 		$mealPlanRecipeEvents = [];
 		$mealPlanNotesEvents = [];
 		$mealPlanProductEvents = [];
@@ -198,6 +217,6 @@ class CalendarService extends BaseService
 			}
 		}
 
-		return array_merge($stockEvents, $taskEvents, $choreEvents, $batteryEvents, $mealPlanRecipeEvents, $mealPlanNotesEvents, $mealPlanProductEvents);
+		return array_merge($stockEvents, $taskEvents, $choreEvents, $batteryEvents, $orderEvents, $mealPlanRecipeEvents, $mealPlanNotesEvents, $mealPlanProductEvents);
 	}
 }
