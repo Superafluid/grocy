@@ -1,0 +1,9 @@
+.git
+.gitmodules
+.github
+.vscode
+.tx
+node_modules
+vendor
+.gitignore
+.DS_Store
