@@ -17,7 +17,7 @@ RUN cp config-dist.php data/config.php \
     && mkdir -p data \
     && chown -R www-data:www-data /var/www/html \
     && composer install --no-interaction --no-progress --prefer-dist --no-dev --optimize-autoloader \
-    && yarnpkg install --frozen-lockfile --production=true \
+    && yarnpkg install --frozen-lockfile \
     && rm -f /etc/apache2/sites-available/000-default.conf \
     && printf '%s\n' \
         '<VirtualHost *:80>' \
