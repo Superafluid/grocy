@@ -1,4 +1,4 @@
-FROM node:22-bookworm AS frontend
+FROM node:24-bookworm AS frontend
 
 WORKDIR /build
 COPY package.json yarn.lock .yarnrc ./
