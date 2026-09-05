@@ -1,7 +1,17 @@
+FROM node:22-bookworm AS frontend
+
+WORKDIR /build
+COPY package.json yarn.lock .yarnrc ./
+
+RUN apt-get update && apt-get install -y --no-install-recommends git \
+    && corepack enable \
+    && yarn install --frozen-lockfile \
+    && rm -rf /var/lib/apt/lists/*
+
 FROM php:8.5-apache
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    git unzip ca-certificates curl nodejs yarnpkg \
+    git unzip ca-certificates curl \
     libpng-dev libjpeg-dev libfreetype6-dev libicu-dev libzip-dev libonig-dev \
     sqlite3 libsqlite3-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
@@ -12,12 +22,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 WORKDIR /var/www/html
 COPY . /var/www/html
+COPY --from=frontend /build/public/packages /var/www/html/public/packages
 
 RUN cp config-dist.php data/config.php \
     && mkdir -p data \
     && chown -R www-data:www-data /var/www/html \
     && composer install --no-interaction --no-progress --prefer-dist --no-dev --optimize-autoloader \
-    && yarnpkg install --frozen-lockfile \
     && rm -f /etc/apache2/sites-available/000-default.conf \
     && printf '%s\n' \
         '<VirtualHost *:80>' \
