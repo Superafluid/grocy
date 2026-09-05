@@ -1,7 +1,7 @@
 FROM php:8.5-apache
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    git unzip ca-certificates curl \
+    git unzip ca-certificates curl nodejs yarnpkg \
     libpng-dev libjpeg-dev libfreetype6-dev libicu-dev libzip-dev libonig-dev \
     sqlite3 libsqlite3-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
@@ -17,6 +17,7 @@ RUN cp config-dist.php data/config.php \
     && mkdir -p data \
     && chown -R www-data:www-data /var/www/html \
     && composer install --no-interaction --no-progress --prefer-dist --no-dev --optimize-autoloader \
+    && yarnpkg install --frozen-lockfile --production=true \
     && rm -f /etc/apache2/sites-available/000-default.conf \
     && printf '%s\n' \
         '<VirtualHost *:80>' \
