@@ -268,6 +268,16 @@
 						<span class="nav-link-text">{{ $__t('Order statistics') }}</span>
 					</a>
 				</li>
+				<li class="nav-item nav-item-sidebar permission-ORDERS @if($viewName == 'consumptionstats') active-page @endif"
+					data-toggle="tooltip"
+					data-placement="right"
+					title="{{ $__t('Consumption statistics') }}">
+					<a class="nav-link discrete-link"
+						href="{{ $U('/consumptionstats') }}">
+						<i class="fa-solid fa-chart-area"></i>
+						<span class="nav-link-text">{{ $__t('Consumption statistics') }}</span>
+					</a>
+				</li>
 				@endif
 				@if(GROCY_FEATURE_FLAG_EQUIPMENT)
 				<li class="nav-item nav-item-sidebar permission-EQUIPMENT @if($viewName == 'equipment') active-page @endif"

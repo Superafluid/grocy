@@ -43,3 +43,9 @@ function RenderBarChart(canvasId, rows, lastYearLabel, thisYearLabel)
 
 RenderBarChart('ordered-chart', Grocy.OrderStats.ordered, Grocy.OrderStats.last_year, Grocy.OrderStats.year);
 RenderBarChart('consumed-chart', Grocy.OrderStats.consumed, Grocy.OrderStats.last_year, Grocy.OrderStats.year);
+
+$('#product-filter').on('change', function()
+{
+	var productId = $(this).val();
+	window.location.href = U('/ordersstats') + (productId ? '?product_id=' + productId : '');
+});

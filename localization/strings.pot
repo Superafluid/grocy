@@ -2504,3 +2504,81 @@ msgstr ""
 
 msgid "Last access"
 msgstr ""
+
+msgid "Orders"
+msgstr ""
+
+msgid "Order statistics"
+msgstr ""
+
+msgid "Statistics"
+msgstr ""
+
+msgid "Ordered date"
+msgstr ""
+
+msgid "Arrive date"
+msgstr ""
+
+msgid "Items"
+msgstr ""
+
+msgid "Ordered amount"
+msgstr ""
+
+msgid "vs"
+msgstr ""
+
+msgid "Create order"
+msgstr ""
+
+msgid "Edit order"
+msgstr ""
+
+msgid "Error while saving"
+msgstr ""
+
+msgid "Consumption statistics"
+msgstr ""
+
+msgid "All products"
+msgstr ""
+
+msgid "Stock history"
+msgstr ""
+
+msgid "Monthly consumption"
+msgstr ""
+
+msgid "Month"
+msgstr ""
+
+msgid "An ordered date is required"
+msgstr ""
+
+msgid "Setting the status to \"delivered\" books all items into your inventory"
+msgstr ""
+
+msgid "Consumptions"
+msgstr ""
+
+msgid "Date"
+msgstr ""
+
+msgid "Inventory count"
+msgstr ""
+
+msgid "Order arriving"
+msgstr ""
+
+msgid "An order requires at least one item"
+msgstr ""
+
+msgid "Mark delivered / add to stock"
+msgstr ""
+
+msgid "Show/hide items"
+msgstr ""
+
+msgid "Order items"
+msgstr ""

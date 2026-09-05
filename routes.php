@@ -117,6 +117,7 @@ $app->group('', function (RouteCollectorProxy $group)
 	$group->get('/orders', [OrdersController::class, 'OrdersList']);
 	$group->get('/order/{orderId}', [OrdersController::class, 'OrderEditForm']);
 	$group->get('/ordersstats', [OrdersController::class, 'Stats']);
+	$group->get('/consumptionstats', [OrdersController::class, 'ConsumptionStats']);
 
 	// Chore routes
 	$group->get('/choresoverview', [ChoresController::class, 'Overview']);
@@ -254,6 +255,7 @@ $app->group('/api', function (RouteCollectorProxy $group)
 	// Orders
 	$group->get('/orders', [OrdersApiController::class, 'GetOrders']);
 	$group->get('/orders/stats', [OrdersApiController::class, 'GetStats']);
+	$group->get('/orders/consumption-stats/{productId}', [OrdersApiController::class, 'GetConsumptionStats']);
 	$group->post('/orders', [OrdersApiController::class, 'CreateOrder']);
 	$group->get('/orders/{orderId}', [OrdersApiController::class, 'GetOrder']);
 	$group->put('/orders/{orderId}', [OrdersApiController::class, 'UpdateOrder']);

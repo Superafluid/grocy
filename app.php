@@ -117,5 +117,8 @@ $errorMiddleware->setDefaultErrorHandler(new ExceptionController($container, $ap
 
 $app->getRouteCollector()->setCacheFile(GROCY_DATAPATH . '/viewcache/route_cache.php');
 
-ob_clean(); // No response output before here
+if (ob_get_level() > 0)
+{
+	ob_clean(); // No response output before here
+}
 $app->run();

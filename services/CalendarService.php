@@ -115,7 +115,7 @@ class CalendarService extends BaseService
 					'title' => $title,
 					'start' => $currentOrderEntry->arrive_date,
 					'date_format' => 'date',
-					'link' => $this->UrlManager->ConstructUrl('/orders'),
+					'link' => $this->UrlManager->ConstructUrl('/orders' . '?order=' . $currentOrderEntry->id),
 					'color' => $usersService->GetUserSettings(GROCY_USER_ID)['calendar_color_orders']
 				];
 			}

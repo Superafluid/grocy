@@ -27,22 +27,31 @@
 			novalidate>
 
 			<div class="form-row">
-				<div class="form-group col-md-3">
-					<label for="ordered_date">{{ $__t('Ordered date') }}</label>
-					<input type="text"
-						class="form-control"
-						required
-						id="ordered_date"
-						name="ordered_date"
-						value="@if($mode == 'edit'){{ $order->ordered_date }}@else{{ date('Y-m-d') }}@endif">
+				<div class="col-md-3">
+					@include('components.datetimepicker2', array(
+					'id' => 'ordered_date',
+					'label' => 'Ordered date',
+					'format' => 'YYYY-MM-DD',
+					'initWithNow' => $mode != 'edit',
+					'initialValue' => $mode == 'edit' ? $order->ordered_date : '',
+					'limitEndToNow' => false,
+					'limitStartToNow' => false,
+					'invalidFeedback' => $__t('An ordered date is required'),
+					'additionalCssClasses' => 'date-only-datetimepicker2'
+					))
 				</div>
-				<div class="form-group col-md-3">
-					<label for="arrive_date">{{ $__t('Arrive date') }}</label>
-					<input type="text"
-						class="form-control"
-						id="arrive_date"
-						name="arrive_date"
-						value="@if($mode == 'edit'){{ $order->arrive_date }}@endif">
+				<div class="col-md-3">
+					@include('components.datetimepicker', array(
+					'id' => 'arrive_date',
+					'label' => 'Arrive date',
+					'format' => 'YYYY-MM-DD',
+					'isRequired' => false,
+					'initWithNow' => false,
+					'initialValue' => $mode == 'edit' ? $order->arrive_date : '',
+					'limitEndToNow' => false,
+					'limitStartToNow' => false,
+					'additionalCssClasses' => 'date-only-datetimepicker'
+					))
 				</div>
 				<div class="form-group col-md-3">
 					<label for="shopping_location_id">{{ $__t('Store') }}</label>
@@ -70,6 +79,7 @@
 						</option>
 						@endforeach
 					</select>
+					<small class="form-text text-muted">{{ $__t('Setting the status to "delivered" books all items into your inventory') }}</small>
 				</div>
 			</div>
 

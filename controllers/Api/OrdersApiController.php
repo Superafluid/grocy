@@ -121,13 +121,37 @@ class OrdersApiController extends BaseApiController
 			$year = intval($request->getQueryParams()['year']);
 		}
 
+		$productId = null;
+		if (isset($request->getQueryParams()['product_id']) && filter_var($request->getQueryParams()['product_id'], FILTER_VALIDATE_INT) !== false)
+		{
+			$productId = intval($request->getQueryParams()['product_id']);
+		}
+
 		try
 		{
-			return $this->ApiResponse($response, OrdersService::GetInstance()->GetStats($year));
+			return $this->ApiResponse($response, OrdersService::GetInstance()->GetStats($year, $productId));
 		}
 		catch (\Exception $ex)
 		{
 			return $this->GenericErrorResponse($response, $ex->getMessage());
+		}
+	}
+
+	public function GetConsumptionStats(Request $request, Response $response, array $args)
+	{
+		$months = 12;
+		if (isset($request->getQueryParams()['months']) && filter_var($request->getQueryParams()['months'], FILTER_VALIDATE_INT) !== false)
+		{
+			$months = intval($request->getQueryParams()['months']);
+		}
+
+		try
+		{
+			return $this->ApiResponse($response, OrdersService::GetInstance()->GetProductConsumptionStats(intval($args['productId']), $months));
+		}
+		catch (\Exception $ex)
+		{
+			return $this->GenericErrorResponse($response, $ex->getMessage(), 400);
 		}
 	}
 }

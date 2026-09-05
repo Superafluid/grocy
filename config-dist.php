@@ -141,17 +141,17 @@ Setting('FEATURE_FLAG_SHOPPINGLIST', true);
 Setting('FEATURE_FLAG_RECIPES', true);
 Setting('FEATURE_FLAG_CHORES', true);
 Setting('FEATURE_FLAG_TASKS', true);
-Setting('FEATURE_FLAG_BATTERIES', true);
+Setting('FEATURE_FLAG_BATTERIES', false);
 Setting('FEATURE_FLAG_EQUIPMENT', true);
 Setting('FEATURE_FLAG_CALENDAR', true);
 Setting('FEATURE_FLAG_ORDERS', true);
 Setting('FEATURE_FLAG_LABEL_PRINTER', false);
 
 // Sub feature flags
-Setting('FEATURE_FLAG_STOCK_PRICE_TRACKING', true);
+Setting('FEATURE_FLAG_STOCK_PRICE_TRACKING', false);
 Setting('FEATURE_FLAG_STOCK_LOCATION_TRACKING', true);
 Setting('FEATURE_FLAG_STOCK_BEST_BEFORE_DATE_TRACKING', true);
-Setting('FEATURE_FLAG_STOCK_PRODUCT_OPENED_TRACKING', true);
+Setting('FEATURE_FLAG_STOCK_PRODUCT_OPENED_TRACKING', false);
 Setting('FEATURE_FLAG_STOCK_PRODUCT_FREEZING', true);
 Setting('FEATURE_FLAG_STOCK_BEST_BEFORE_DATE_FIELD_NUMBER_PAD', true); // Activate the number pad in due date fields on (supported) mobile browsers
 Setting('FEATURE_FLAG_SHOPPINGLIST_MULTIPLE_LISTS', true);

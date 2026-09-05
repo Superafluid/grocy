@@ -44,7 +44,8 @@ $('#save-order-button').on('click', function(e)
 	}
 
 	var jsonData = {
-		ordered_date: $('#ordered_date').val(),
+		ordered_date: Grocy.Components.DateTimePicker2.GetValue(),
+		arrive_date: Grocy.Components.DateTimePicker.GetValue() ? Grocy.Components.DateTimePicker.GetValue() : null,
 		shopping_location_id: $('#shopping_location_id').val() ? parseInt($('#shopping_location_id').val()) : null,
 		status: $('#status').val(),
 		note: $('#note').val(),
@@ -83,5 +84,5 @@ $('#save-order-button').on('click', function(e)
 
 setTimeout(function()
 {
-	$('#ordered_date').focus();
+	Grocy.Components.DateTimePicker2.GetInputElement().focus();
 }, Grocy.FormFocusDelay);
